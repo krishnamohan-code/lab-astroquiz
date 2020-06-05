@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.User;
 import utility.BasicEligibility;
-import utility.EligibiltyCheck;
+import utility.EligibilityCheck;
+//import utility.EligibiltyCheck;
 
 @WebServlet(urlPatterns= {"/eligible"})
 public class EligibilityViewController extends HttpServlet {
@@ -46,7 +47,11 @@ public class EligibilityViewController extends HttpServlet {
 		user.setHeight(height);
 		user.setWeight(weight);
 		
-		System.out.println(spaceEligible);
+		
+		EligibilityCheck ec = new EligibilityCheck();
+		boolean spaceEligible=ec.basicEligibilityCheck(user);
+		
+		System.out.println(spaceEligible +"Hello world");
 			if(spaceEligible)
 			{
 				RequestDispatcher rd=this.getServletContext().getRequestDispatcher("/WEB-INF/views/quiz.jsp");
